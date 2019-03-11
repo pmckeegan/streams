@@ -7,8 +7,15 @@ var options = {
   path: '/'
 };
 
-var callback = function() {
+var callback = function(response) {
   console.log("in response handler callback!");
+
+
+response.on('data', function(chunk){
+  console.log("[-- CHUNK OF LENGTH " + chunk.length + " --]");
+  console.log(chunk.toString());
+
+});
 
 }
 
