@@ -1,21 +1,21 @@
 var https = require('https');
-
 console.log('I did it!');
 
-var options = {
-  host: 'www.example.org',
-  path: '/'
+var options =
+{
+  host: 'stream-large-file.herokuapp.com',
+  path: '/give-me-stuff-now'
 };
 
-var callback = function(response) {
+var callback = function(response)
+{
   console.log("in response handler callback!");
+  response.on('data', function(chunk)
+  {
+    console.log("[-- CHUNK OF LENGTH " + chunk.length + " --]");
+    console.log(chunk.toString());
 
-
-response.on('data', function(chunk){
-  console.log("[-- CHUNK OF LENGTH " + chunk.length + " --]");
-  console.log(chunk.toString());
-
-});
+  });
 
 }
 
